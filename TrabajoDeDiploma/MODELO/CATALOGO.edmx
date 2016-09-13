@@ -1,0 +1,1125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MODELO.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MODELOStoreContainer">
+    <EntitySet Name="USUARIOS" EntityType="MODELO.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MODULOS" EntityType="MODELO.Store.MODULOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SUBMODULOS" EntityType="MODELO.Store.SUBMODULOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FORMULARIOS" EntityType="MODELO.Store.FORMULARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ACCIONES" EntityType="MODELO.Store.ACCIONES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GRUPOS" EntityType="MODELO.Store.GRUPOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AUDITORIAS_LOGIN" EntityType="MODELO.Store.AUDITORIAS_LOGIN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CLIENTES" EntityType="MODELO.Store.CLIENTES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FACTURAS" EntityType="MODELO.Store.FACTURAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCTOS" EntityType="MODELO.Store.PRODUCTOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MOVIMIENTOS" EntityType="MODELO.Store.MOVIMIENTOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RECIBOS" EntityType="MODELO.Store.RECIBOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NOTAS_CREDITO" EntityType="MODELO.Store.NOTAS_CREDITO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CAJAS" EntityType="MODELO.Store.CAJAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MOVIMIENTOS_CAJA" EntityType="MODELO.Store.MOVIMIENTOS_CAJA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FORMAS_DE_PAGOS" EntityType="MODELO.Store.FORMAS_DE_PAGOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLES_FACTURA" EntityType="MODELO.Store.DETALLES_FACTURA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TARJETAS" EntityType="MODELO.Store.TARJETAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOGRUPO" EntityType="MODELO.Store.USUARIOGRUPO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GRUPOACCION" EntityType="MODELO.Store.GRUPOACCION" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MODULOSUBMODULO" Association="MODELO.Store.MODULOSUBMODULO">
+      <End Role="MODULO" EntitySet="MODULOS" />
+      <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+    </AssociationSet>
+    <AssociationSet Name="SUBMODULOFORMULARIO" Association="MODELO.Store.SUBMODULOFORMULARIO">
+      <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+      <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FORMULARIOACCION" Association="MODELO.Store.FORMULARIOACCION">
+      <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+      <End Role="ACCION" EntitySet="ACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOGRUPO_USUARIO" Association="MODELO.Store.FK_USUARIOGRUPO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+      <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOGRUPO_GRUPO" Association="MODELO.Store.FK_USUARIOGRUPO_GRUPO">
+      <End Role="GRUPO" EntitySet="GRUPOS" />
+      <End Role="USUARIOGRUPO" EntitySet="USUARIOGRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPOACCION_GRUPO" Association="MODELO.Store.FK_GRUPOACCION_GRUPO">
+      <End Role="GRUPO" EntitySet="GRUPOS" />
+      <End Role="GRUPOACCION" EntitySet="GRUPOACCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPOACCION_ACCION" Association="MODELO.Store.FK_GRUPOACCION_ACCION">
+      <End Role="ACCION" EntitySet="ACCIONES" />
+      <End Role="GRUPOACCION" EntitySet="GRUPOACCION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIOAUDITORIA_LOGIN" Association="MODELO.Store.USUARIOAUDITORIA_LOGIN">
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+      <End Role="AUDITORIA_LOGIN" EntitySet="AUDITORIAS_LOGIN" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTEFACTURA" Association="MODELO.Store.CLIENTEFACTURA">
+      <End Role="CLIENTE" EntitySet="CLIENTES" />
+      <End Role="FACTURA" EntitySet="FACTURAS" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTERECIBO" Association="MODELO.Store.CLIENTERECIBO">
+      <End Role="CLIENTE" EntitySet="CLIENTES" />
+      <End Role="RECIBO" EntitySet="RECIBOS" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTENOTA_CREDITO" Association="MODELO.Store.CLIENTENOTA_CREDITO">
+      <End Role="CLIENTE" EntitySet="CLIENTES" />
+      <End Role="NOTA_CREDITO" EntitySet="NOTAS_CREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="CAJAMOVIMIENTO_CAJA" Association="MODELO.Store.CAJAMOVIMIENTO_CAJA">
+      <End Role="CAJA" EntitySet="CAJAS" />
+      <End Role="MOVIMIENTO_CAJA" EntitySet="MOVIMIENTOS_CAJA" />
+    </AssociationSet>
+    <AssociationSet Name="FACTURADETALLE_FACTURA" Association="MODELO.Store.FACTURADETALLE_FACTURA">
+      <End Role="FACTURA" EntitySet="FACTURAS" />
+      <End Role="DETALLE_FACTURA" EntitySet="DETALLES_FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCTODETALLE_FACTURA" Association="MODELO.Store.PRODUCTODETALLE_FACTURA">
+      <End Role="PRODUCTO" EntitySet="PRODUCTOS" />
+      <End Role="DETALLE_FACTURA" EntitySet="DETALLES_FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTEMOVIMIENTO" Association="MODELO.Store.CLIENTEMOVIMIENTO">
+      <End Role="CLIENTE" EntitySet="CLIENTES" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Usuario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DNI" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Resetear_Clave" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODULOS">
+    <Key>
+      <PropertyRef Name="Id_Modulo" />
+    </Key>
+    <Property Name="Id_Modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUBMODULOS">
+    <Key>
+      <PropertyRef Name="Id_Submodulo" />
+    </Key>
+    <Property Name="Id_Submodulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MODULO_Id_Modulo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FORMULARIOS">
+    <Key>
+      <PropertyRef Name="Id_Formulario" />
+    </Key>
+    <Property Name="Id_Formulario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Menu" Type="bit" Nullable="false" />
+    <Property Name="Clase" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="SUBMODULO_Id_Submodulo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACCIONES">
+    <Key>
+      <PropertyRef Name="Id_Accion" />
+    </Key>
+    <Property Name="Id_Accion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Control" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FORMULARIO_Id_Formulario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GRUPOS">
+    <Key>
+      <PropertyRef Name="Id_Grupo" />
+    </Key>
+    <Property Name="Id_Grupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AUDITORIAS_LOGIN">
+    <Key>
+      <PropertyRef Name="Id_Auditoria_Login" />
+    </Key>
+    <Property Name="Id_Auditoria_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entrada" Type="datetime" Nullable="false" />
+    <Property Name="Salida" Type="datetime" Nullable="true" />
+    <Property Name="USUARIO_Id_Usuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="Id_Cliente" />
+    </Key>
+    <Property Name="Id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DNI" Type="int" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Provincia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cuenta_Corriente" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FACTURAS">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo_Factura" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Importe" Type="decimal" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Nro_Factura" Type="int" Nullable="false" />
+    <Property Name="CLIENTE_Id_Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTOS">
+    <Key>
+      <PropertyRef Name="Codigo_Producto" />
+    </Key>
+    <Property Name="Codigo_Producto" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Nullable="false" />
+    <Property Name="Precio_Costo" Type="decimal" Nullable="false" />
+    <Property Name="Stock" Type="decimal" Nullable="false" />
+    <Property Name="Stock_Minimo" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MOVIMIENTOS">
+    <Key>
+      <PropertyRef Name="Id_Movimiento" />
+    </Key>
+    <Property Name="Id_Movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Tipo_Comprobante" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Nro_Comprobante" Type="int" Nullable="true" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Facturado" Type="decimal" Nullable="true" />
+    <Property Name="Pagado" Type="decimal" Nullable="false" />
+    <Property Name="id_Cliente" Type="int" Nullable="false" />
+    <Property Name="Importe_Cancelado" Type="decimal" Nullable="true" />
+    <Property Name="Saldo" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RECIBOS">
+    <Key>
+      <PropertyRef Name="Id_Recibo" />
+    </Key>
+    <Property Name="Id_Recibo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nro_Recibo" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Importe" Type="decimal" Nullable="false" />
+    <Property Name="Constancia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CLIENTE_Id_Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTAS_CREDITO">
+    <Key>
+      <PropertyRef Name="Id_Nc" />
+    </Key>
+    <Property Name="Id_Nc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Nro_Nc" Type="int" Nullable="false" />
+    <Property Name="Nro_Factura" Type="int" Nullable="false" />
+    <Property Name="CLIENTE_Id_Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CAJAS">
+    <Key>
+      <PropertyRef Name="Id_Caja" />
+    </Key>
+    <Property Name="Id_Caja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MOVIMIENTOS_CAJA">
+    <Key>
+      <PropertyRef Name="Id_Movimiento" />
+    </Key>
+    <Property Name="Id_Movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comprobante" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Número_Comprobante" Type="int" Nullable="false" />
+    <Property Name="Forma_de_Pago" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Entrada" Type="decimal" Nullable="false" />
+    <Property Name="Salida" Type="decimal" Nullable="false" />
+    <Property Name="CAJA_Id_Caja" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FORMAS_DE_PAGOS">
+    <Key>
+      <PropertyRef Name="Id_Forma" />
+    </Key>
+    <Property Name="Id_Forma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLES_FACTURA">
+    <Key>
+      <PropertyRef Name="id_Factura" />
+      <PropertyRef Name="Codigo_Producto" />
+    </Key>
+    <Property Name="id_Factura" Type="int" Nullable="false" />
+    <Property Name="Codigo_Producto" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="decimal" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TARJETAS">
+    <Key>
+      <PropertyRef Name="Id_Tarjeta" />
+    </Key>
+    <Property Name="Id_Tarjeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOGRUPO">
+    <Key>
+      <PropertyRef Name="USUARIO_Id_Usuario" />
+      <PropertyRef Name="GRUPO_Id_Grupo" />
+    </Key>
+    <Property Name="USUARIO_Id_Usuario" Type="int" Nullable="false" />
+    <Property Name="GRUPO_Id_Grupo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GRUPOACCION">
+    <Key>
+      <PropertyRef Name="GRUPO_Id_Grupo" />
+      <PropertyRef Name="ACCION_Id_Accion" />
+    </Key>
+    <Property Name="GRUPO_Id_Grupo" Type="int" Nullable="false" />
+    <Property Name="ACCION_Id_Accion" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MODULOSUBMODULO">
+    <End Role="MODULO" Type="MODELO.Store.MODULOS" Multiplicity="1" />
+    <End Role="SUBMODULO" Type="MODELO.Store.SUBMODULOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODULO">
+        <PropertyRef Name="Id_Modulo" />
+      </Principal>
+      <Dependent Role="SUBMODULO">
+        <PropertyRef Name="MODULO_Id_Modulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SUBMODULOFORMULARIO">
+    <End Role="SUBMODULO" Type="MODELO.Store.SUBMODULOS" Multiplicity="1" />
+    <End Role="FORMULARIO" Type="MODELO.Store.FORMULARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUBMODULO">
+        <PropertyRef Name="Id_Submodulo" />
+      </Principal>
+      <Dependent Role="FORMULARIO">
+        <PropertyRef Name="SUBMODULO_Id_Submodulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FORMULARIOACCION">
+    <End Role="FORMULARIO" Type="MODELO.Store.FORMULARIOS" Multiplicity="1" />
+    <End Role="ACCION" Type="MODELO.Store.ACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORMULARIO">
+        <PropertyRef Name="Id_Formulario" />
+      </Principal>
+      <Dependent Role="ACCION">
+        <PropertyRef Name="FORMULARIO_Id_Formulario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIOAUDITORIA_LOGIN">
+    <End Role="USUARIO" Type="MODELO.Store.USUARIOS" Multiplicity="1" />
+    <End Role="AUDITORIA_LOGIN" Type="MODELO.Store.AUDITORIAS_LOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="AUDITORIA_LOGIN">
+        <PropertyRef Name="USUARIO_Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTEFACTURA">
+    <End Role="CLIENTE" Type="MODELO.Store.CLIENTES" Multiplicity="1" />
+    <End Role="FACTURA" Type="MODELO.Store.FACTURAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="CLIENTE_Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTERECIBO">
+    <End Role="CLIENTE" Type="MODELO.Store.CLIENTES" Multiplicity="1" />
+    <End Role="RECIBO" Type="MODELO.Store.RECIBOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="RECIBO">
+        <PropertyRef Name="CLIENTE_Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTENOTA_CREDITO">
+    <End Role="CLIENTE" Type="MODELO.Store.CLIENTES" Multiplicity="1" />
+    <End Role="NOTA_CREDITO" Type="MODELO.Store.NOTAS_CREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="NOTA_CREDITO">
+        <PropertyRef Name="CLIENTE_Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CAJAMOVIMIENTO_CAJA">
+    <End Role="CAJA" Type="MODELO.Store.CAJAS" Multiplicity="1" />
+    <End Role="MOVIMIENTO_CAJA" Type="MODELO.Store.MOVIMIENTOS_CAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAJA">
+        <PropertyRef Name="Id_Caja" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO_CAJA">
+        <PropertyRef Name="CAJA_Id_Caja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FACTURADETALLE_FACTURA">
+    <End Role="FACTURA" Type="MODELO.Store.FACTURAS" Multiplicity="1" />
+    <End Role="DETALLE_FACTURA" Type="MODELO.Store.DETALLES_FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACTURA">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="DETALLE_FACTURA">
+        <PropertyRef Name="id_Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCTODETALLE_FACTURA">
+    <End Role="PRODUCTO" Type="MODELO.Store.PRODUCTOS" Multiplicity="1" />
+    <End Role="DETALLE_FACTURA" Type="MODELO.Store.DETALLES_FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="Codigo_Producto" />
+      </Principal>
+      <Dependent Role="DETALLE_FACTURA">
+        <PropertyRef Name="Codigo_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTEMOVIMIENTO">
+    <End Role="CLIENTE" Type="MODELO.Store.CLIENTES" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="MODELO.Store.MOVIMIENTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOGRUPO_USUARIO">
+    <End Role="USUARIO" Type="MODELO.Store.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOGRUPO" Type="MODELO.Store.USUARIOGRUPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="USUARIOGRUPO">
+        <PropertyRef Name="USUARIO_Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOGRUPO_GRUPO">
+    <End Role="USUARIOGRUPO" Type="MODELO.Store.USUARIOGRUPO" Multiplicity="*" />
+    <End Role="GRUPO" Type="MODELO.Store.GRUPOS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GRUPO">
+        <PropertyRef Name="Id_Grupo" />
+      </Principal>
+      <Dependent Role="USUARIOGRUPO">
+        <PropertyRef Name="GRUPO_Id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPOACCION_GRUPO">
+    <End Role="GRUPO" Type="MODELO.Store.GRUPOS" Multiplicity="1" />
+    <End Role="GRUPOACCION" Type="MODELO.Store.GRUPOACCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GRUPO">
+        <PropertyRef Name="Id_Grupo" />
+      </Principal>
+      <Dependent Role="GRUPOACCION">
+        <PropertyRef Name="GRUPO_Id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPOACCION_ACCION">
+    <End Role="GRUPOACCION" Type="MODELO.Store.GRUPOACCION" Multiplicity="*" />
+    <End Role="ACCION" Type="MODELO.Store.ACCIONES" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ACCION">
+        <PropertyRef Name="Id_Accion" />
+      </Principal>
+      <Dependent Role="GRUPOACCION">
+        <PropertyRef Name="ACCION_Id_Accion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MODELO" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CATALOGO" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="USUARIOS" EntityType="MODELO.USUARIO" />
+          <EntitySet Name="MODULOS" EntityType="MODELO.MODULO" />
+          <EntitySet Name="SUBMODULOS" EntityType="MODELO.SUBMODULO" />
+          <AssociationSet Name="MODULOSUBMODULO" Association="MODELO.MODULOSUBMODULO">
+            <End Role="MODULO" EntitySet="MODULOS" />
+            <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+          </AssociationSet>
+          <EntitySet Name="FORMULARIOS" EntityType="MODELO.FORMULARIO" />
+          <AssociationSet Name="SUBMODULOFORMULARIO" Association="MODELO.SUBMODULOFORMULARIO">
+            <End Role="SUBMODULO" EntitySet="SUBMODULOS" />
+            <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+          </AssociationSet>
+          <EntitySet Name="ACCIONES" EntityType="MODELO.ACCION" />
+          <AssociationSet Name="FORMULARIOACCION" Association="MODELO.FORMULARIOACCION">
+            <End Role="FORMULARIO" EntitySet="FORMULARIOS" />
+            <End Role="ACCION" EntitySet="ACCIONES" />
+          </AssociationSet>
+          <EntitySet Name="GRUPOS" EntityType="MODELO.GRUPO" />
+          <AssociationSet Name="USUARIOGRUPO" Association="MODELO.USUARIOGRUPO">
+            <End Role="USUARIO" EntitySet="USUARIOS" />
+            <End Role="GRUPO" EntitySet="GRUPOS" />
+          </AssociationSet>
+          <AssociationSet Name="GRUPOACCION" Association="MODELO.GRUPOACCION">
+            <End Role="GRUPO" EntitySet="GRUPOS" />
+            <End Role="ACCION" EntitySet="ACCIONES" />
+          </AssociationSet>
+          <EntitySet Name="AUDITORIAS_LOGIN" EntityType="MODELO.AUDITORIA_LOGIN" />
+          <AssociationSet Name="USUARIOAUDITORIA_LOGIN" Association="MODELO.USUARIOAUDITORIA_LOGIN">
+            <End Role="USUARIO" EntitySet="USUARIOS" />
+            <End Role="AUDITORIA_LOGIN" EntitySet="AUDITORIAS_LOGIN" />
+          </AssociationSet>
+          <EntitySet Name="CLIENTES" EntityType="MODELO.CLIENTE" />
+          <EntitySet Name="FACTURAS" EntityType="MODELO.FACTURA" />
+          <AssociationSet Name="CLIENTEFACTURA" Association="MODELO.CLIENTEFACTURA">
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="FACTURA" EntitySet="FACTURAS" />
+          </AssociationSet>
+          <EntitySet Name="PRODUCTOS" EntityType="MODELO.PRODUCTO" />
+          <EntitySet Name="MOVIMIENTOS" EntityType="MODELO.MOVIMIENTO" />
+          <EntitySet Name="RECIBOS" EntityType="MODELO.RECIBO" />
+          <AssociationSet Name="CLIENTERECIBO" Association="MODELO.CLIENTERECIBO">
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="RECIBO" EntitySet="RECIBOS" />
+          </AssociationSet>
+          <EntitySet Name="NOTAS_CREDITO" EntityType="MODELO.NOTA_CREDITO" />
+          <AssociationSet Name="CLIENTENOTA_CREDITO" Association="MODELO.CLIENTENOTA_CREDITO">
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="NOTA_CREDITO" EntitySet="NOTAS_CREDITO" />
+          </AssociationSet>
+          <EntitySet Name="CAJAS" EntityType="MODELO.CAJA" />
+          <EntitySet Name="MOVIMIENTOS_CAJA" EntityType="MODELO.MOVIMIENTO_CAJA" />
+          <AssociationSet Name="CAJAMOVIMIENTO_CAJA" Association="MODELO.CAJAMOVIMIENTO_CAJA">
+            <End Role="CAJA" EntitySet="CAJAS" />
+            <End Role="MOVIMIENTO_CAJA" EntitySet="MOVIMIENTOS_CAJA" />
+          </AssociationSet>
+          <EntitySet Name="FORMAS_DE_PAGOS" EntityType="MODELO.FORMA_DE_PAGO" />
+          <EntitySet Name="DETALLES_FACTURA" EntityType="MODELO.DETALLE_FACTURA" />
+          <AssociationSet Name="FACTURADETALLE_FACTURA" Association="MODELO.FACTURADETALLE_FACTURA">
+            <End Role="FACTURA" EntitySet="FACTURAS" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTODETALLE_FACTURA" Association="MODELO.PRODUCTODETALLE_FACTURA">
+            <End Role="PRODUCTO" EntitySet="PRODUCTOS" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTEMOVIMIENTO" Association="MODELO.CLIENTEMOVIMIENTO">
+            <End Role="CLIENTE" EntitySet="CLIENTES" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOS" />
+          </AssociationSet>
+          <EntitySet Name="TARJETAS" EntityType="MODELO.TARJETA" />
+        </EntityContainer>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Usuario" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="DNI" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Resetear_Clave" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GRUPO" Relationship="MODELO.USUARIOGRUPO" FromRole="USUARIO" ToRole="GRUPO" />
+          <NavigationProperty Name="AUDITORIA_LOGIN" Relationship="MODELO.USUARIOAUDITORIA_LOGIN" FromRole="USUARIO" ToRole="AUDITORIA_LOGIN" />
+        </EntityType>
+        <EntityType Name="MODULO">
+          <Key>
+            <PropertyRef Name="Id_Modulo" />
+          </Key>
+          <Property Name="Id_Modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="SUBMODULO" Relationship="MODELO.MODULOSUBMODULO" FromRole="MODULO" ToRole="SUBMODULO" />
+        </EntityType>
+        <EntityType Name="SUBMODULO">
+          <Key>
+            <PropertyRef Name="Id_Submodulo" />
+          </Key>
+          <Property Name="Id_Submodulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="MODULO" Relationship="MODELO.MODULOSUBMODULO" FromRole="SUBMODULO" ToRole="MODULO" />
+          <NavigationProperty Name="FORMULARIO" Relationship="MODELO.SUBMODULOFORMULARIO" FromRole="SUBMODULO" ToRole="FORMULARIO" />
+        </EntityType>
+        <Association Name="MODULOSUBMODULO">
+          <End Type="MODELO.MODULO" Role="MODULO" Multiplicity="1" />
+          <End Type="MODELO.SUBMODULO" Role="SUBMODULO" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FORMULARIO">
+          <Key>
+            <PropertyRef Name="Id_Formulario" />
+          </Key>
+          <Property Name="Id_Formulario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Menu" Type="Boolean" Nullable="false" />
+          <Property Name="Clase" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SUBMODULO" Relationship="MODELO.SUBMODULOFORMULARIO" FromRole="FORMULARIO" ToRole="SUBMODULO" />
+          <NavigationProperty Name="ACCION" Relationship="MODELO.FORMULARIOACCION" FromRole="FORMULARIO" ToRole="ACCION" />
+        </EntityType>
+        <Association Name="SUBMODULOFORMULARIO">
+          <End Type="MODELO.SUBMODULO" Role="SUBMODULO" Multiplicity="1" />
+          <End Type="MODELO.FORMULARIO" Role="FORMULARIO" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ACCION">
+          <Key>
+            <PropertyRef Name="Id_Accion" />
+          </Key>
+          <Property Name="Id_Accion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Control" Type="String" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="FORMULARIO" Relationship="MODELO.FORMULARIOACCION" FromRole="ACCION" ToRole="FORMULARIO" />
+          <NavigationProperty Name="GRUPO" Relationship="MODELO.GRUPOACCION" FromRole="ACCION" ToRole="GRUPO" />
+        </EntityType>
+        <Association Name="FORMULARIOACCION">
+          <End Type="MODELO.FORMULARIO" Role="FORMULARIO" Multiplicity="1" />
+          <End Type="MODELO.ACCION" Role="ACCION" Multiplicity="*" />
+        </Association>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="Id_Grupo" />
+          </Key>
+          <Property Name="Id_Grupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="MODELO.USUARIOGRUPO" FromRole="GRUPO" ToRole="USUARIO" />
+          <NavigationProperty Name="ACCION" Relationship="MODELO.GRUPOACCION" FromRole="GRUPO" ToRole="ACCION" />
+        </EntityType>
+        <Association Name="USUARIOGRUPO">
+          <End Type="MODELO.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <End Type="MODELO.GRUPO" Role="GRUPO" Multiplicity="*" />
+        </Association>
+        <Association Name="GRUPOACCION">
+          <End Type="MODELO.GRUPO" Role="GRUPO" Multiplicity="*" />
+          <End Type="MODELO.ACCION" Role="ACCION" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AUDITORIA_LOGIN">
+          <Key>
+            <PropertyRef Name="Id_Auditoria_Login" />
+          </Key>
+          <Property Name="Id_Auditoria_Login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entrada" Type="DateTime" Nullable="false" />
+          <Property Name="Salida" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="USUARIO" Relationship="MODELO.USUARIOAUDITORIA_LOGIN" FromRole="AUDITORIA_LOGIN" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="USUARIOAUDITORIA_LOGIN">
+          <End Type="MODELO.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="MODELO.AUDITORIA_LOGIN" Role="AUDITORIA_LOGIN" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="DNI" Type="Int32" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Cuenta_Corriente" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FACTURA" Relationship="MODELO.CLIENTEFACTURA" FromRole="CLIENTE" ToRole="FACTURA" />
+          <NavigationProperty Name="RECIBO" Relationship="MODELO.CLIENTERECIBO" FromRole="CLIENTE" ToRole="RECIBO" />
+          <NavigationProperty Name="NOTA_CREDITO" Relationship="MODELO.CLIENTENOTA_CREDITO" FromRole="CLIENTE" ToRole="NOTA_CREDITO" />
+          <NavigationProperty Name="MOVIMIENTO" Relationship="MODELO.CLIENTEMOVIMIENTO" FromRole="CLIENTE" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="Id_Factura" />
+          </Key>
+          <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Factura" Type="String" Nullable="false" />
+          <Property Name="Importe" Type="Decimal" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="MODELO.CLIENTEFACTURA" FromRole="FACTURA" ToRole="CLIENTE" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="MODELO.FACTURADETALLE_FACTURA" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
+          <Property Name="Nro_Factura" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CLIENTEFACTURA">
+          <End Type="MODELO.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="MODELO.FACTURA" Role="FACTURA" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Codigo_Producto" />
+          </Key>
+          <Property Name="Codigo_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" ConcurrencyMode="None" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" />
+          <Property Name="Precio_Costo" Type="Decimal" Nullable="false" />
+          <Property Name="Stock" Type="Decimal" Nullable="false" />
+          <Property Name="Stock_Minimo" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="MODELO.PRODUCTODETALLE_FACTURA" FromRole="PRODUCTO" ToRole="DETALLE_FACTURA" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO">
+          <Key>
+            <PropertyRef Name="Id_Movimiento" />
+          </Key>
+          <Property Name="Id_Movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Tipo_Comprobante" Type="String" Nullable="true" MaxLength="Max" />
+          <Property Name="Nro_Comprobante" Type="Int32" Nullable="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Facturado" Type="Decimal" Nullable="true" />
+          <Property Name="Pagado" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="MODELO.CLIENTEMOVIMIENTO" FromRole="MOVIMIENTO" ToRole="CLIENTE" />
+          <Property Name="id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Importe_Cancelado" Type="Decimal" Nullable="true" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECIBO">
+          <Key>
+            <PropertyRef Name="Id_Recibo" />
+          </Key>
+          <Property Name="Id_Recibo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nro_Recibo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Importe" Type="Decimal" Nullable="false" />
+          <Property Name="Constancia" Type="String" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="CLIENTE" Relationship="MODELO.CLIENTERECIBO" FromRole="RECIBO" ToRole="CLIENTE" />
+        </EntityType>
+        <Association Name="CLIENTERECIBO">
+          <End Type="MODELO.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="MODELO.RECIBO" Role="RECIBO" Multiplicity="*" />
+        </Association>
+        <EntityType Name="NOTA_CREDITO">
+          <Key>
+            <PropertyRef Name="Id_Nc" />
+          </Key>
+          <Property Name="Id_Nc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Nro_Nc" Type="Int32" Nullable="false" />
+          <Property Name="Nro_Factura" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="MODELO.CLIENTENOTA_CREDITO" FromRole="NOTA_CREDITO" ToRole="CLIENTE" />
+        </EntityType>
+        <Association Name="CLIENTENOTA_CREDITO">
+          <End Type="MODELO.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="MODELO.NOTA_CREDITO" Role="NOTA_CREDITO" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CAJA">
+          <Key>
+            <PropertyRef Name="Id_Caja" />
+          </Key>
+          <Property Name="Id_Caja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="MOVIMIENTO_CAJA" Relationship="MODELO.CAJAMOVIMIENTO_CAJA" FromRole="CAJA" ToRole="MOVIMIENTO_CAJA" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO_CAJA">
+          <Key>
+            <PropertyRef Name="Id_Movimiento" />
+          </Key>
+          <Property Name="Id_Movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Comprobante" Type="String" Nullable="false" />
+          <Property Name="Número_Comprobante" Type="Int32" Nullable="false" />
+          <Property Name="Forma_de_Pago" Type="String" Nullable="true" MaxLength="Max" />
+          <Property Name="Entrada" Type="Decimal" Nullable="false" />
+          <Property Name="Salida" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="CAJA" Relationship="MODELO.CAJAMOVIMIENTO_CAJA" FromRole="MOVIMIENTO_CAJA" ToRole="CAJA" />
+        </EntityType>
+        <Association Name="CAJAMOVIMIENTO_CAJA">
+          <End Type="MODELO.CAJA" Role="CAJA" Multiplicity="1" />
+          <End Type="MODELO.MOVIMIENTO_CAJA" Role="MOVIMIENTO_CAJA" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FORMA_DE_PAGO">
+          <Key>
+            <PropertyRef Name="Id_Forma" />
+          </Key>
+          <Property Name="Id_Forma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+        </EntityType>
+        <EntityType Name="DETALLE_FACTURA" >
+          <Key>
+            <PropertyRef Name="id_Factura" />
+            <PropertyRef Name="Codigo_Producto" />
+          </Key>
+          <NavigationProperty Name="FACTURA" Relationship="MODELO.FACTURADETALLE_FACTURA" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
+          <Property Name="id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="PRODUCTO" Relationship="MODELO.PRODUCTODETALLE_FACTURA" FromRole="DETALLE_FACTURA" ToRole="PRODUCTO" />
+          <Property Name="Codigo_Producto" Type="Int32" Nullable="false" ConcurrencyMode="None" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="FACTURADETALLE_FACTURA">
+          <End Type="MODELO.FACTURA" Role="FACTURA" Multiplicity="1" />
+          <End Type="MODELO.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="Id_Factura" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="id_Factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTODETALLE_FACTURA">
+          <End Type="MODELO.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
+          <End Type="MODELO.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Codigo_Producto" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="Codigo_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTEMOVIMIENTO">
+          <End Type="MODELO.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="MODELO.MOVIMIENTO" Role="MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TARJETA">
+          <Key>
+            <PropertyRef Name="Id_Tarjeta" />
+          </Key>
+          <Property Name="Id_Tarjeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MODELOStoreContainer" CdmEntityContainer="CATALOGO">
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.USUARIO)">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Resetear_Clave" ColumnName="Resetear_Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.MODULO)">
+        <MappingFragment StoreEntitySet="MODULOS">
+          <ScalarProperty Name="Id_Modulo" ColumnName="Id_Modulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBMODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.SUBMODULO)">
+        <MappingFragment StoreEntitySet="SUBMODULOS">
+          <ScalarProperty Name="Id_Submodulo" ColumnName="Id_Submodulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FORMULARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.FORMULARIO)">
+        <MappingFragment StoreEntitySet="FORMULARIOS">
+          <ScalarProperty Name="Id_Formulario" ColumnName="Id_Formulario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="Clase" ColumnName="Clase" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACCIONES">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.ACCION)">
+        <MappingFragment StoreEntitySet="ACCIONES">
+          <ScalarProperty Name="Id_Accion" ColumnName="Id_Accion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Control" ColumnName="Control" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.GRUPO)">
+        <MappingFragment StoreEntitySet="GRUPOS">
+          <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUDITORIAS_LOGIN">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.AUDITORIA_LOGIN)">
+        <MappingFragment StoreEntitySet="AUDITORIAS_LOGIN">
+          <ScalarProperty Name="Id_Auditoria_Login" ColumnName="Id_Auditoria_Login" />
+          <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+          <ScalarProperty Name="Salida" ColumnName="Salida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.CLIENTE)">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Cuenta_Corriente" ColumnName="Cuenta_Corriente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURAS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.FACTURA)">
+        <MappingFragment StoreEntitySet="FACTURAS">
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="Tipo_Factura" ColumnName="Tipo_Factura" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nro_Factura" ColumnName="Nro_Factura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.PRODUCTO)">
+        <MappingFragment StoreEntitySet="PRODUCTOS">
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Precio_Costo" ColumnName="Precio_Costo" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Stock_Minimo" ColumnName="Stock_Minimo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOVIMIENTOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.MOVIMIENTO)">
+        <MappingFragment StoreEntitySet="MOVIMIENTOS">
+          <ScalarProperty Name="Id_Movimiento" ColumnName="Id_Movimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Tipo_Comprobante" ColumnName="Tipo_Comprobante" />
+          <ScalarProperty Name="Nro_Comprobante" ColumnName="Nro_Comprobante" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Facturado" ColumnName="Facturado" />
+          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+          <ScalarProperty Name="Importe_Cancelado" ColumnName="Importe_Cancelado" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECIBOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.RECIBO)">
+        <MappingFragment StoreEntitySet="RECIBOS">
+          <ScalarProperty Name="Id_Recibo" ColumnName="Id_Recibo" />
+          <ScalarProperty Name="Nro_Recibo" ColumnName="Nro_Recibo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Constancia" ColumnName="Constancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTAS_CREDITO">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.NOTA_CREDITO)">
+        <MappingFragment StoreEntitySet="NOTAS_CREDITO">
+          <ScalarProperty Name="Id_Nc" ColumnName="Id_Nc" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nro_Nc" ColumnName="Nro_Nc" />
+          <ScalarProperty Name="Nro_Factura" ColumnName="Nro_Factura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAJAS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.CAJA)">
+        <MappingFragment StoreEntitySet="CAJAS">
+          <ScalarProperty Name="Id_Caja" ColumnName="Id_Caja" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOVIMIENTOS_CAJA">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.MOVIMIENTO_CAJA)">
+        <MappingFragment StoreEntitySet="MOVIMIENTOS_CAJA">
+          <ScalarProperty Name="Id_Movimiento" ColumnName="Id_Movimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="Comprobante" ColumnName="Comprobante" />
+          <ScalarProperty Name="Número_Comprobante" ColumnName="Número_Comprobante" />
+          <ScalarProperty Name="Forma_de_Pago" ColumnName="Forma_de_Pago" />
+          <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+          <ScalarProperty Name="Salida" ColumnName="Salida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FORMAS_DE_PAGOS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.FORMA_DE_PAGO)">
+        <MappingFragment StoreEntitySet="FORMAS_DE_PAGOS">
+          <ScalarProperty Name="Id_Forma" ColumnName="Id_Forma" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLES_FACTURA">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.DETALLE_FACTURA)">
+        <MappingFragment StoreEntitySet="DETALLES_FACTURA">
+          <ScalarProperty Name="id_Factura" ColumnName="id_Factura" />
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARJETAS">
+      <EntityTypeMapping TypeName="IsTypeOf(MODELO.TARJETA)">
+        <MappingFragment StoreEntitySet="TARJETAS">
+          <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MODULOSUBMODULO" TypeName="MODELO.MODULOSUBMODULO" StoreEntitySet="SUBMODULOS">
+      <EndProperty Name="MODULO">
+        <ScalarProperty Name="Id_Modulo" ColumnName="MODULO_Id_Modulo" />
+      </EndProperty>
+      <EndProperty Name="SUBMODULO">
+        <ScalarProperty Name="Id_Submodulo" ColumnName="Id_Submodulo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SUBMODULOFORMULARIO" TypeName="MODELO.SUBMODULOFORMULARIO" StoreEntitySet="FORMULARIOS">
+      <EndProperty Name="SUBMODULO">
+        <ScalarProperty Name="Id_Submodulo" ColumnName="SUBMODULO_Id_Submodulo" />
+      </EndProperty>
+      <EndProperty Name="FORMULARIO">
+        <ScalarProperty Name="Id_Formulario" ColumnName="Id_Formulario" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FORMULARIOACCION" TypeName="MODELO.FORMULARIOACCION" StoreEntitySet="ACCIONES">
+      <EndProperty Name="FORMULARIO">
+        <ScalarProperty Name="Id_Formulario" ColumnName="FORMULARIO_Id_Formulario" />
+      </EndProperty>
+      <EndProperty Name="ACCION">
+        <ScalarProperty Name="Id_Accion" ColumnName="Id_Accion" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIOGRUPO" TypeName="MODELO.USUARIOGRUPO" StoreEntitySet="USUARIOGRUPO">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="Id_Usuario" ColumnName="USUARIO_Id_Usuario" />
+      </EndProperty>
+      <EndProperty Name="GRUPO">
+        <ScalarProperty Name="Id_Grupo" ColumnName="GRUPO_Id_Grupo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GRUPOACCION" TypeName="MODELO.GRUPOACCION" StoreEntitySet="GRUPOACCION">
+      <EndProperty Name="GRUPO">
+        <ScalarProperty Name="Id_Grupo" ColumnName="GRUPO_Id_Grupo" />
+      </EndProperty>
+      <EndProperty Name="ACCION">
+        <ScalarProperty Name="Id_Accion" ColumnName="ACCION_Id_Accion" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIOAUDITORIA_LOGIN" TypeName="MODELO.USUARIOAUDITORIA_LOGIN" StoreEntitySet="AUDITORIAS_LOGIN">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="Id_Usuario" ColumnName="USUARIO_Id_Usuario" />
+      </EndProperty>
+      <EndProperty Name="AUDITORIA_LOGIN">
+        <ScalarProperty Name="Id_Auditoria_Login" ColumnName="Id_Auditoria_Login" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CLIENTEFACTURA" TypeName="MODELO.CLIENTEFACTURA" StoreEntitySet="FACTURAS">
+      <EndProperty Name="CLIENTE">
+        <ScalarProperty Name="Id_Cliente" ColumnName="CLIENTE_Id_Cliente" />
+      </EndProperty>
+      <EndProperty Name="FACTURA">
+        <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CLIENTERECIBO" TypeName="MODELO.CLIENTERECIBO" StoreEntitySet="RECIBOS">
+      <EndProperty Name="CLIENTE">
+        <ScalarProperty Name="Id_Cliente" ColumnName="CLIENTE_Id_Cliente" />
+      </EndProperty>
+      <EndProperty Name="RECIBO">
+        <ScalarProperty Name="Id_Recibo" ColumnName="Id_Recibo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CLIENTENOTA_CREDITO" TypeName="MODELO.CLIENTENOTA_CREDITO" StoreEntitySet="NOTAS_CREDITO">
+      <EndProperty Name="CLIENTE">
+        <ScalarProperty Name="Id_Cliente" ColumnName="CLIENTE_Id_Cliente" />
+      </EndProperty>
+      <EndProperty Name="NOTA_CREDITO">
+        <ScalarProperty Name="Id_Nc" ColumnName="Id_Nc" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CAJAMOVIMIENTO_CAJA" TypeName="MODELO.CAJAMOVIMIENTO_CAJA" StoreEntitySet="MOVIMIENTOS_CAJA">
+      <EndProperty Name="CAJA">
+        <ScalarProperty Name="Id_Caja" ColumnName="CAJA_Id_Caja" />
+      </EndProperty>
+      <EndProperty Name="MOVIMIENTO_CAJA">
+        <ScalarProperty Name="Id_Movimiento" ColumnName="Id_Movimiento" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
